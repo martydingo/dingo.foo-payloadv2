@@ -5,7 +5,9 @@ export default function Home() {
   return (
     <div>
       <NavigationBar />
-      <p>Hello World</p>
+      <div className="prose dark:prose-invert mx-auto container">
+        <h1>Hello World</h1>
+      </div>
     </div>
   );
 }
