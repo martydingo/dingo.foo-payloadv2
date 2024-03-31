@@ -4,6 +4,7 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb';
 import { slateEditor } from '@payloadcms/richtext-slate';
 import { webpackBundler } from '@payloadcms/bundler-webpack';
 
+import siteImage from './collections/Media/SiteImage/SiteImage';
 import profileImage from './collections/Media/ProfileImage/ProfileImage';
 import Users from './collections/Users';
 
@@ -17,6 +18,7 @@ export default buildConfig({
   editor: slateEditor({}),
   collections: [
     profileImage,
+    siteImage,
     Users
   ],
   globals: [
