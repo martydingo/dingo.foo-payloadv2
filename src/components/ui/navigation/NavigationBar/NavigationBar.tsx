@@ -14,6 +14,7 @@ import {
 } from "@/shadcn-ui/navigation-menu"
 import Image from "next/image";
 import React from "react";
+import AdminButton from "../../admin-button";
 
 export default function NavigationBar() {
     return (
@@ -59,7 +60,10 @@ export default function NavigationBar() {
                 </NavigationMenuList>
             </NavigationMenu>
             <div className="self-center mt-3 mr-3">
-                <DarkModeToggle />
+                <div className="flex gap-4">
+                    <AdminButton />
+                    <DarkModeToggle />
+                </div>
             </div>
         </header>
     )

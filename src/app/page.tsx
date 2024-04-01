@@ -1,4 +1,4 @@
-import "./globals.css";
+import "@/styles/css/globals.css";
 import NavigationBar from "@/components/ui/navigation/NavigationBar/NavigationBar";
 
 export default function Home() {
@@ -6,7 +6,6 @@ export default function Home() {
     <div>
       <NavigationBar />
       <div className="prose dark:prose-invert mx-auto container">
-        <h1>Hello World</h1>
       </div>
     </div>
   );

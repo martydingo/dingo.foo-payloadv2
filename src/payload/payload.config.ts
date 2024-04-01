@@ -7,6 +7,8 @@ import { webpackBundler } from '@payloadcms/bundler-webpack';
 import siteImage from './collections/Media/SiteImage/SiteImage';
 import profileImage from './collections/Media/ProfileImage/ProfileImage';
 import Users from './collections/Users';
+import Blog from './collections/Blog/Blog';
+import blogImage from './collections/Media/BlogImage/BlogImage';
 
 export default buildConfig({
   admin: {
@@ -17,9 +19,11 @@ export default buildConfig({
   }),
   editor: slateEditor({}),
   collections: [
+    blogImage,
     profileImage,
     siteImage,
-    Users
+    Users,
+    Blog
   ],
   globals: [
     // Your globals here

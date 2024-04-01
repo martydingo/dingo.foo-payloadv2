@@ -20,7 +20,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/shadcn-ui/*": ["./src/components/lib/shadcn-ui/*"]
-    }
+    },
+    "typeRoots": ["node_modules/@types"], // "typeRoots": [] -> won't work
+    "types": ["node"] // "types": [] -> won't work
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
