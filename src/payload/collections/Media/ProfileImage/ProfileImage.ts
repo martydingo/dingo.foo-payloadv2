@@ -11,7 +11,7 @@ const profileImage: CollectionConfig = {
     },
     upload: {
         staticURL: '/images/avatar',
-        staticDir: './public/images/avatar',
+        staticDir: '../../public/images/avatar',
         imageSizes: [
             {
                 name: 'avatar',

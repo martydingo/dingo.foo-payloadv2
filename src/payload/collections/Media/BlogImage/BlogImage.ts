@@ -11,7 +11,7 @@ const blogImage: CollectionConfig = {
     },
     upload: {
         staticURL: '/images/blog',
-        staticDir: '/astro/public/images/blog',
+        staticDir: '../../public/images/blog',
         imageSizes: [
             {
                 name: 'banner_large',
@@ -27,6 +27,25 @@ const blogImage: CollectionConfig = {
                 name: 'banner_small',
                 width: 720,
                 height: undefined,
+            },
+            {
+                name: 'square_large',
+                width: 1440,
+                height: 1440,
+                position: 'centre',
+            },
+            {
+                name: 'square_medium',
+                width: 1080,
+                height: 1080,
+                position: 'centre',
+            },
+            {
+                name: 'square_small',
+                width: 720,
+                height: 720,
+                position: 'centre',
+
             },
         ],
         // adminThumbnail: 'thumbnail',

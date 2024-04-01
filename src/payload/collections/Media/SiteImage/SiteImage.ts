@@ -11,7 +11,7 @@ const siteImage: CollectionConfig = {
     },
     upload: {
         staticURL: '/images/site',
-        staticDir: '/public/images/site',
+        staticDir: '../../public/images/site',
         imageSizes: [
             {
                 name: 'small',
@@ -40,6 +40,12 @@ const siteImage: CollectionConfig = {
             {
                 name: 'xx_large',
                 height: 1024,
+                width: undefined,
+                position: 'centre',
+            },
+            {
+                name: 'xxx_large',
+                height: 2048,
                 width: undefined,
                 position: 'centre',
             },
