@@ -6,7 +6,6 @@ export default function BlogListBasic({ pages }) {
         <div className="prose dark:prose-invert mx-auto">
             {
                 pages.docs.map((page) => {
-                    console.log(page.slug)
                     return (
                         <div key="">
                             <div className="">

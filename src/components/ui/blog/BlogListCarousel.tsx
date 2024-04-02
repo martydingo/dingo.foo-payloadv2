@@ -11,6 +11,9 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/shadcn-ui/carousel"
+import {
+    Separator,
+} from "@/shadcn-ui/separator"
 import Image from "next/image";
 import Link from "next/link";
 
@@ -25,15 +28,19 @@ export function BlogListCarousel({ pages }) {
                 {pages.docs.map((page, index) => (
                     <CarouselItem className="" key={index}>
                         <Link href={`/blog/${page.slug}`}>
-                            {page.previewImage && <Image width={"10000"} height={"10000"} sizes="100%" className="fixed object-cover z-0 brightness-75 blur-sm" alt={page.previewImage.alt} src={page.previewImage.sizes.square_small.url} />}
                             <div className="p-1">
                                 <Card>
-                                    <CardContent className="flex aspect-square items-center p-6">
-                                        <div className={"flex flex-col self-end justify-start"} >
-                                            <span className="z-10 text-white lg:text-xl text-lg font-thin lg:font-light">
+                                    {page.previewImage && <div className="absolute w-full h-full z-10 -ml-2 rounded">
+                                        <Image fill className="object-cover brightness-90" alt={page.previewImage.alt} src={page.previewImage.sizes.square_small.url} />
+                                    </div>}
+                                    <CardContent className="flex aspect-square items-center p-6 rounded">
+                                        <div className={"flex flex-col self-end justify-start backdrop-brightness-75 backdrop-blur-sm z-10 py-1 px-2 rounded-lg gap-y-2"} >
+                                            <span className="z-10 text-white lg:text-xl font-thin lg:font-light">
                                                 <sub>{new Date(page.date).toDateString()}</sub>
                                             </span>
                                             <span className="text-white z-10 text-2xl font-light lg:text-5xl self-end justify-end lg:font-base font-titillium">{page.title}</span>
+                                            <Separator className="z-10 bg-white prose dark:prose-invert" />
+                                            <span dangerouslySetInnerHTML={{ "__html": page.summary_html }} className="text-sm z-10" />
                                         </div>
                                     </CardContent>
                                 </Card>
