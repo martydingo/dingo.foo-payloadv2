@@ -3,29 +3,28 @@
 
 import mermaid from "mermaid"
 import MermaidModal from "./MermaidModal";
-import { createRoot } from 'react-dom/client';
+import { render } from 'react-dom';
 import react from "react";
 
 export default function Mermaid() {
 
     react.useEffect(() => {
-        const mermaidDiagrams = document.getElementsByClassName("mermaid")
-        Object.values(mermaidDiagrams).forEach((mermaidDiagram) => async () => {
-            await mermaid.render(mermaidDiagram.id, mermaidDiagram.innerHTML)
-        })
-
         const mermaidContainers = document.getElementsByClassName("mermaid-container")
 
         Array.from(mermaidContainers).forEach((mermaidContainer) => {
+            console.log(mermaidContainer)
+            const html = render(<MermaidModal />, mermaidContainer)
+            console.log(html)
             const innerContainer = document.createElement("div")
-            const innerDiagram = mermaidContainer.getElementsByTagName("svg")[0]
-            const root = createRoot(innerContainer)
-            const html = root.render(<MermaidModal mermaidCode={innerDiagram} />)
+            innerContainer.innerHTML = html
             mermaidContainer.appendChild(innerContainer)
         })
     })
 
-
+    const mermaidDiagrams = document.getElementsByClassName("mermaid")
+    Object.values(mermaidDiagrams).forEach((mermaidDiagram) => async () => {
+        await mermaid.render(mermaidDiagram.id, mermaidDiagram.innerHTML)
+    })
 
 
 

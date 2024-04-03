@@ -9,9 +9,9 @@ import {
     DialogTrigger,
 } from "@/shadcn-ui/dialog"
 
-export default function MermaidModal() {
+export default function MermaidModal({ mermaidCode }: { mermaidCode: any }) {
 
-
+    console.log(mermaidCode)
     return (
         <div>
             <Dialog>
@@ -20,6 +20,7 @@ export default function MermaidModal() {
                     <DialogHeader>
                         <DialogTitle>Diagram</DialogTitle>
                         <DialogDescription>
+                            {mermaidCode}
                         </DialogDescription>
                     </DialogHeader>
                 </DialogContent>
