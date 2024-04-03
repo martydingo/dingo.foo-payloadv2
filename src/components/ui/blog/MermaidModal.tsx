@@ -1,9 +1,29 @@
-import mermaid from "mermaid"
+'use client';
 
-export default function MermaidModal({ mermaidCode }: { mermaidCode: string }) {
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/shadcn-ui/dialog"
+
+export default function MermaidModal() {
+
+
     return (
         <div>
-            {mermaid.initialize({ startOnLoad: true })}
+            <Dialog>
+                <DialogTrigger>View Diagram</DialogTrigger>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Diagram</DialogTitle>
+                        <DialogDescription>
+                        </DialogDescription>
+                    </DialogHeader>
+                </DialogContent>
+            </Dialog>
         </div>
     )
 }

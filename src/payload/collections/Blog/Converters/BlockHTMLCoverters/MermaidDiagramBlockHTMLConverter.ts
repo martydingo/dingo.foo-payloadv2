@@ -1,11 +1,8 @@
-import mermaid from "mermaid"
 
 export const MermaidDiagramBlockHTMLConverter = {
     converter: async ({ fields }) => {
-        const element = document.createElement('div')
-        const { svg } = await mermaid.render(element.id, fields.mermaidDiagramCode)
-        console.log(svg)
-        return `<pre class="mermaid">${fields.mermaidDiagramCode}</pre>`
+        const mermaidUUID = (Math.random() + 1).toString(36).substring(7);
+        return `<pre id="mermaid-${mermaidUUID}" class="mermaid">${fields.mermaidDiagramCode}</pre>`
     },
     nodeTypes: ['block'],
 }
