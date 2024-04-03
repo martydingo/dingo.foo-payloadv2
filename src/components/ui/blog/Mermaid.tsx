@@ -9,23 +9,24 @@ import react from "react";
 export default function Mermaid() {
 
     react.useEffect(() => {
+        const diagrams = []
+        if(window === undefined) return
         const mermaidDiagrams = document.getElementsByClassName("mermaid")
         Object.values(mermaidDiagrams).forEach((mermaidDiagram) => async () => {
-            await mermaid.render(mermaidDiagram.id, mermaidDiagram.innerHTML)
+            diagrams.push(await mermaid.render(mermaidDiagram.id, mermaidDiagram.innerHTML))
         })
-
+        
         const mermaidContainers = document.getElementsByClassName("mermaid-container")
-
         Array.from(mermaidContainers).forEach((mermaidContainer) => {
+            console.log(diagrams)
             const innerContainer = document.createElement("div")
-            const innerDiagram = mermaidContainer.getElementsByTagName("svg")[0]
+            const mermaidSvgId = mermaidContainer.getElementsByTagName("svg")[0].id
             const root = createRoot(innerContainer)
-            const html = root.render(<MermaidModal mermaidCode={innerDiagram} />)
+            const html = root.render(<MermaidModal mermaidId={mermaidSvgId} />)
             mermaidContainer.appendChild(innerContainer)
         })
+        
     })
-
-
 
 
 

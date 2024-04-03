@@ -8,19 +8,25 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/shadcn-ui/dialog"
+import React from "react";
 
-export default function MermaidModal({ mermaidCode }: { mermaidCode: any }) {
+export default function MermaidModal({ mermaidId }: { mermaidId: string }) {
+    console.log(mermaidId)
+    React.useEffect(() => {
 
-    console.log(mermaidCode)
+        const mermaidSvg = document.getElementById(mermaidId)
+        console.log(mermaidSvg)
+    })
     return (
         <div>
             <Dialog>
                 <DialogTrigger>View Diagram</DialogTrigger>
                 <DialogContent>
                     <DialogHeader>
+                        {document.getElementById(mermaidId)}
                         <DialogTitle>Diagram</DialogTitle>
                         <DialogDescription>
-                            {mermaidCode}
+                            Test
                         </DialogDescription>
                     </DialogHeader>
                 </DialogContent>
