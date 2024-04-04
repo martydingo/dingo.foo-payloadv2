@@ -20,15 +20,17 @@ export default function MermaidModal({ mermaidId }: { mermaidId: string }) {
 
         async function renderSVG() {
             const mermaidElement = document.getElementById(mermaidId)
+            // const mermaidCode = mermaidElement!.innerText
             const mermaidCode = mermaidElement!.innerText
-            mermaid.initialize({ 
+            await mermaid.initialize({ 
                 startOnLoad: false, 
                 theme: "forest",
                 flowchart:{
-                    defaultRenderer: "elk"
+                    defaultRenderer: "dagre"
                 }
             })
-            const { svg } = await mermaid.render("mermaidDummy", mermaidCode)
+            const { svg, bindFunctions } = await mermaid.render("mermaid", mermaidCode)
+            bindFunctions!(mermaidElement!)
             // console.log(svg)
             saveMermaidSVG(svg, mermaidId)
             const div = document.createElement('div')
