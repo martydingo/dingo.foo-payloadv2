@@ -19,10 +19,21 @@ export default function MermaidModal({ mermaidId }: { mermaidId: string }) {
         // console.log(`mermaidId: ${mermaidId}`)
 
         async function renderSVG() {
-            const mermaidCode = document.getElementById(mermaidId)!.innerText
+            const mermaidElement = document.getElementById(mermaidId)
+            const mermaidCode = mermaidElement!.innerText
+            mermaid.initialize({ 
+                startOnLoad: false, 
+                theme: "forest",
+                flowchart:{
+                    defaultRenderer: "elk"
+                }
+            })
             const { svg } = await mermaid.render("mermaidDummy", mermaidCode)
             // console.log(svg)
             saveMermaidSVG(svg, mermaidId)
+            const div = document.createElement('div')
+            div.innerHTML = svg
+            mermaidElement!.replaceWith(div)
         }
         renderSVG()
     }, [])
@@ -31,7 +42,7 @@ export default function MermaidModal({ mermaidId }: { mermaidId: string }) {
             <Dialog>
                 <DialogTrigger>View Diagram</DialogTrigger>
                 <DialogContent className="max-w-[95%] max-h-[95%]">
-                    <img src={svgFilePath} />
+                    <img className="object-fill" src={svgFilePath} />
                     {/* <DialogHeader>
                     <DialogTitle>Diagram</DialogTitle>
                     <DialogDescription>
