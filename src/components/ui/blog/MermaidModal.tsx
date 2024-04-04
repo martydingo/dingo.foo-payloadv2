@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import {
     Dialog,
@@ -8,42 +8,36 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/shadcn-ui/dialog"
-import mermaid from "mermaid";
-import React from "react";
 
-export default function MermaidModal({ mermaidCode, mermaidId }: { mermaidCode: string, mermaidId: string }) {
+import mermaid from "mermaid"
+import React from "react"
+import saveMermaidSVG from "@/components/lib/mermaid/saveMermaidSVG"
 
-    let [svg, setSvg] = React.useState()
+export default function MermaidModal({ mermaidId }: { mermaidId: string }) {
+    const svgFilePath = `/images/blog/mermaid/mermaid-${mermaidId.split("-")[1]}-${mermaidId.split("-")[2]}.svg`
+    React.useLayoutEffect(() => {
+        // console.log(`mermaidId: ${mermaidId}`)
 
-    const mermaidElement = document.getElementById(mermaidId)
-    console.log(mermaidElement)
-    const mermaidModalId = `mermaid-modal-${mermaidId.split("-")[1]}`
-    React.useEffect(() => {
-        async () => {
-            setSvg(await mermaid.render(mermaidId, mermaidCode))
-
-            // const mermaidDiagrams = document.getElementsByClassName("mermaid")
-            // await mermaid.run({
-            //     nodes: document.querySelectorAll('.mermaid'),
-            // });
+        async function renderSVG() {
+            const mermaidCode = document.getElementById(mermaidId)!.innerText
+            const { svg } = await mermaid.render("mermaidDummy", mermaidCode)
+            // console.log(svg)
+            saveMermaidSVG(svg, mermaidId)
         }
-    })
+        renderSVG()
+    }, [])
     return (
         <div>
             <Dialog>
                 <DialogTrigger>View Diagram</DialogTrigger>
                 <DialogContent className="max-w-[95%] max-h-[95%]">
+                    <img src={svgFilePath} />
                     {/* <DialogHeader>
-                        <DialogTitle>Diagram</DialogTitle>
-                        <DialogDescription>
-                            Test
-                        </DialogDescription>
-                    </DialogHeader> */}
-                    <div id={mermaidModalId}>
-                        <pre id={`mermaid-${mermaidId.split("-")[1]}-2`} className="mermaid">
-                            {svg}
-                        </pre>
-                    </div>
+                    <DialogTitle>Diagram</DialogTitle>
+                    <DialogDescription>
+                        Test
+                    </DialogDescription>
+                </DialogHeader> */}
                 </DialogContent>
             </Dialog>
         </div >

@@ -7,19 +7,20 @@ import react from "react";
 
 export default function Mermaid() {
 
-    react.useLayoutEffect(() => {
+    react.useEffect(() => {
 
         if (window === undefined) return
 
         const mermaidContainers = document.getElementsByClassName("mermaid-container")
         Array.from(mermaidContainers).forEach((mermaidContainer) => {
-            const mermaidId = `mermaid-${mermaidContainer.id.split("-")[2]}`
+            const mermaidId = `mermaid-${mermaidContainer.id.split("-")[2]}-${mermaidContainer.id.split("-")[3]}`
             const mermaidCode = document.getElementById(mermaidId)!.innerText
+            console.log(`mermaidId: ${mermaidId}`)
             // const mermaidSvgId = mermaidContainer.getElementsByTagName("svg")[0].id
 
             const newContainer = document.createElement('div')
             const root = createRoot(newContainer)
-            root.render(<MermaidModal mermaidCode={mermaidCode} mermaidId={mermaidId} />)
+            root.render(<MermaidModal mermaidId={mermaidId} />)
             mermaidContainer.appendChild(newContainer)
         })
 

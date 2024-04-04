@@ -13,12 +13,12 @@ import mermaid from "mermaid"
 import React from "react"
 import saveMermaidSVG from "../lib/mermaid/saveMermaidSVG"
 
-export default function MermaidModalTest({ mermaidCode }: { mermaidCode: string }) {
-    React.useLayoutEffect( () => {
-        async function renderSVG()  {
+export default function MermaidModalTest({ mermaidCode, mermaidId }: { mermaidCode: string, mermaidId: string }) {
+    React.useLayoutEffect(() => {
+        async function renderSVG() {
             const { svg } = await mermaid.render("mermaidTest", mermaidCode)
             // console.log(svg)
-            saveMermaidSVG(svg)
+            saveMermaidSVG(svg, mermaidId)
         }
         renderSVG()
     }, [])

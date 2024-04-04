@@ -4,7 +4,7 @@ import MermaidModalTest from "@/components/ui/MermaidModalTest";
 
 export default function Home() {
 
-  console.log(encodeURI("Core Network Diagram"))
+  console.log(process.cwd())
 
   const mermaidCode = `
   flowchart
@@ -124,7 +124,7 @@ export default function Home() {
   172.16.5.1 <-.-> 172.16.5.2 
   172.16.6.1 <-.-> 172.16.6.2
   `
-  
+
   return (
     <div>
       <NavigationBar />

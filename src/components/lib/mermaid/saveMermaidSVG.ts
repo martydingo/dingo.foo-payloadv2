@@ -1,9 +1,16 @@
 "use server";
-import mermaid from "mermaid"
 import fs from "fs"
 
-
-export default async function saveMermaidSVG(mermaidSvg: string) {
-  console.log(mermaidSvg)
-  fs.writeFileSync('mermaid.svg', mermaidSvg)
+export default async function saveMermaidSVG(mermaidSvg: string, mermaidFileName: string) {
+  fs.writeFileSync(`${process.cwd()}/public/images/blog/mermaid/${mermaidFileName}.svg`, mermaidSvg)
+  return `${process.cwd()}/public/images/blog/mermaid/${mermaidFileName}.svg`
 }
+
+// %% {
+//   init: {
+//     "theme": "dark",
+//     "flowchart": {
+//       "defaultRenderer": "elk"
+//     }
+//   }
+// } %%
