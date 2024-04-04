@@ -4,6 +4,7 @@ const { withPayload } = require("@payloadcms/next-payload");
 
 module.exports = withPayload(
   {
+    reactStrictMode: false,
     experimental: {
       esmExternals: "loose"
     },

@@ -13,6 +13,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         },
     })
 
+
     return (
         <div>
             <div className="prose dark:prose-invert container xl:container">
