@@ -1,6 +1,6 @@
 import "@/styles/css/globals.css";
 import NavigationBar from "@/components/ui/navigation/NavigationBar/NavigationBar";
-import MermaidModal from "@/components/ui/blog/MermaidModal";
+import BreadCrumb from "@/components/ui/navigation/BreadCrumb/BreadCrumb";
 
 export default function Home() {
 
@@ -8,9 +8,7 @@ export default function Home() {
     <div>
       <NavigationBar />
       <div className="prose dark:prose-invert mx-auto container">
-
-
-        <MermaidModal mermaidId="mermaid-123" />
+        <BreadCrumb pageDicts={[{ "pageTitle": "Home", "pageHref": "/" }]} renderHeadings={false} />
       </div>
     </div>
   );

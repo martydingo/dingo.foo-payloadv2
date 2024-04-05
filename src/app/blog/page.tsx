@@ -3,6 +3,7 @@ import { getPayloadClient } from "@/payload/payloadClient";
 import Link from "next/link";
 import BlogListBasic from "@/components/ui/blog/BlogListBasic";
 import { BlogListCarousel } from "@/components/ui/blog/BlogListCarousel";
+import BreadCrumb from "@/components/ui/navigation/BreadCrumb/BreadCrumb";
 
 export default async function Blog() {
     const payload = await getPayloadClient();
@@ -14,6 +15,7 @@ export default async function Blog() {
         <div className="flex flex-col mt-4">
             <div className="flex w-screen">
                 <div className="basis-1/3" />
+            <BreadCrumb rootPage={{ "title": "Blog", "href": "/blog" }} />
                 <div className="basis-1/3">
                     <h1 className="self-center text-center text-4xl pb-8 font-titillium">
                         Featured Posts
