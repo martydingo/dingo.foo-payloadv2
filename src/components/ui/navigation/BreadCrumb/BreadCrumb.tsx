@@ -31,7 +31,7 @@ function slugify(text: string) {
         .replace(/-+$/, "") // Trim - from end of text
 }
 
-export default function BreadCrumb({ rootPage, curPage, allPosts }: { rootPage: { title: string, href: string }, curPage: { title: string, href: string } | undefined, allPosts?: any }) {
+export default function BreadCrumb({ rootPage, curPage, allPosts }: { rootPage: { title: string, href: string }, curPage?: { title: string, href: string } | undefined, allPosts?: any }) {
 
 
     let headings: { "index": number, "title": string, "href": string }[]

@@ -15,7 +15,6 @@ export default function Mermaid() {
         Array.from(mermaidContainers).forEach((mermaidContainer) => {
             const mermaidId = `mermaid-${mermaidContainer.id.split("-")[2]}-${mermaidContainer.id.split("-")[3]}`
             const mermaidCode = document.getElementById(mermaidId)!.innerText
-            console.log(`mermaidId: ${mermaidId}`)
             // const mermaidSvgId = mermaidContainer.getElementsByTagName("svg")[0].id
 
             const newContainer = document.createElement('div')
