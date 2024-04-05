@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react"
 
 import {
@@ -10,15 +12,29 @@ import {
     SelectValue,
 } from "@/shadcn-ui/select"
 
-export default function HeadingSelect() {
+export default function HeadingSelect({ headings }: { headings: any }) {
+    React.useEffect(() => {
+        headings.forEach((heading) => {
+            let documentHeading = document.getElementById(heading.slug)
+            // documentHeading.id = `${heading.slug}-${heading.index}`
+        })
+    })
     return (
         <Select>
             <SelectTrigger className="w-[280px]">
                 <SelectValue placeholder="Headings" />
             </SelectTrigger>
             <SelectContent>
-                <SelectItem value="h1">H1</SelectItem>
+                {
+                    headings.map((heading) => {
+                        return (
+                            <SelectItem value={heading.href}>
+                                {heading.title}
+                            </SelectItem>
+                        )
+                    })
+                }
             </SelectContent>
-        </Select>
+        </Select >
     )
 }
