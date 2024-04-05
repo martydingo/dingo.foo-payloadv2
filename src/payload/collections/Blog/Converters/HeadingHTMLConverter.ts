@@ -16,19 +16,20 @@ function slugify(text: string) {
 
 export const HeadingHTMLConverter: any = {
     converter: async ({ node }) => {
+        console.log(node)
         switch (node.tag) {
             case "h1":
-                return `<h1 id="${slugify(node.children[0].text)}" className = "text-center xl:text-left"> ${node.children[0].text} </h1>`
+                return `<h1 id="${slugify(node.children[0].text)}" className = "text-center xl:text-left">${node.children[0].text}</h1>`
             case "h2":
-                return `<h2 id="${slugify(node.children[0].text)}"> ${node.children[0].text} </h2>`
+                return `<h2 id="${slugify(node.children[0].text)}">${node.children[0].text}</h2>`
             case "h3":
-                return `<h3 id="${slugify(node.children[0].text)}"> ${node.children[0].text} </h3>`
+                return `<h3 id="${slugify(node.children[0].text)}">${node.children[0].text}</h3>`
             case "h4":
-                return `<h4 id="${slugify(node.children[0].text)}"> ${node.children[0].text} </h4>`
+                return `<h4 id="${slugify(node.children[0].text)}">${node.children[0].text}</h4>`
             case "h5":
-                return `<h5 id="${slugify(node.children[0].text)}"> ${node.children[0].text} </h5>`
+                return `<h5 id="${slugify(node.children[0].text)}">${node.children[0].text}</h5>`
             case "h6":
-                return `<h6 id="${slugify(node.children[0].text)}"> ${node.children[0].text} </h6>`
+                return `<h6 id="${slugify(node.children[0].text)}">${node.children[0].text}</h6>`
         }
     },
     nodeTypes: ['heading'],

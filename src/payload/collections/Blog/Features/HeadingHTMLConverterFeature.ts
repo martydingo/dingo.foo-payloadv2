@@ -3,6 +3,7 @@ import { TextNode } from "lexical"
 import { HeadingHTMLConverter } from "../Converters/HeadingHTMLConverter"
 
 export const HeadingHTMLConverterFeature = (props?): FeatureProvider => {
+    console.log(`headingHTMLFeature - props: ${JSON.stringify(props)}`)
     return {
         feature: () => {
             return {
@@ -18,6 +19,6 @@ export const HeadingHTMLConverterFeature = (props?): FeatureProvider => {
                 props: props,
             }
         },
-        key: 'Heading',
+        key: 'heading',
     }
 }

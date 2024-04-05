@@ -2,6 +2,7 @@ import type { SerializedEditorState } from 'lexical'
 import type { RichTextField, TextField } from 'payload/types'
 
 import { defaultHTMLConverters, type AdapterProps, type HTMLConverterFeatureProps, SanitizedEditorConfig, HTMLConverter, LexicalRichTextAdapter, convertLexicalToHTML } from '@payloadcms/richtext-lexical'
+import { HeadingHTMLConverter } from '../Converters/HeadingHTMLConverter'
 
 
 type Props = {
@@ -88,7 +89,7 @@ export const lexicalHTML: (lexicalFieldName: string, props: Props) => TextField 
                     })
 
                     return await convertLexicalToHTML({
-                        converters: finalConverters,
+                        converters: [HeadingHTMLConverter, ...finalConverters],
                         data: lexicalFieldData,
                     })
                 },

@@ -15,8 +15,10 @@ import {
 export default function HeadingSelect({ headings }: { headings: any }) {
     React.useEffect(() => {
         headings.forEach((heading) => {
-            let documentHeading = document.getElementById(heading.slug)
-            // documentHeading.id = `${heading.slug}-${heading.index}`
+            let documentHeading = document.getElementById(heading.href)
+            console.log(`documentHeading: ${documentHeading}`)
+            documentHeading.id = `${heading.href}-${heading.index}`
+            // console.log(`heading.slug: ${heading.href}`)
         })
     })
     return (
