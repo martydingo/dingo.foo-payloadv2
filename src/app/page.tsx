@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <div>
-      <NavigationBar />
+      <NavigationBar curPage="Home" />
       <div className="prose dark:prose-invert mx-auto container">
         <BreadCrumb pageDicts={[{ "pageTitle": "Home", "pageHref": "/" }]} renderHeadings={false} />
       </div>

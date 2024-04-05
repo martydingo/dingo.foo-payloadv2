@@ -16,14 +16,14 @@ import Image from "next/image";
 import React from "react";
 import AdminButton from "../../admin-button";
 
-export default function NavigationBar() {
+export default function NavigationBar({ curPage }: { curPage: string }) {
     return (
-        <header className="px-4 py-3 sticky top-0 flex justify-between">
+        <header className="rounded-xl px-4 sticky top-0 flex justify-between bg-black z-20 opacity-85 pb-3 ">
             <NavigationMenu className="mt-3">
                 <NavigationMenuList>
                     <NavigationMenuItem>
                         <NavigationMenuTrigger>
-                            <p className="text-2xl font-titillium tracking-widest">dingo.foo</p>
+                            <p className="text-2xl font-titillium tracking-widest ml-3">dingo.foo</p>
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
                             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -59,6 +59,9 @@ export default function NavigationBar() {
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
+            <div className="self-center font-titillium uppercase font-bold text-xl mt-4">
+                {curPage}
+            </div>
             <div className="self-center mt-3 mr-3">
                 <div className="flex gap-4">
                     <AdminButton />

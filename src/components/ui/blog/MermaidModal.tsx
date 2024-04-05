@@ -12,9 +12,12 @@ import {
 import mermaid from "mermaid"
 import React from "react"
 import saveMermaidSVG from "@/components/lib/mermaid/saveMermaidSVG"
+import Image from "next/image"
+import { Button } from "@/components/lib/shadcn-ui/button"
+import { ZoomInIcon } from "@radix-ui/react-icons"
 
 export default function MermaidModal({ mermaidId }: { mermaidId: string }) {
-    
+
     const svgFilePath = `/images/blog/mermaid/mermaid-${mermaidId.split("-")[1]}-${mermaidId.split("-")[2]}.svg`
 
     React.useLayoutEffect(() => {
@@ -24,14 +27,14 @@ export default function MermaidModal({ mermaidId }: { mermaidId: string }) {
             const mermaidElement = document.getElementById(mermaidId)
             // const mermaidCode = mermaidElement!.innerText
             const mermaidCode = mermaidElement!.innerText
-            await mermaid.initialize({ 
-                startOnLoad: false, 
+            await mermaid.initialize({
+                startOnLoad: false,
                 securityLevel: 'loose',
                 theme: "base",
                 themeVariables: {
                     darkMode: true,
-                    fontFamily: "JetBrains Mono",
-                    // fontSize: "1.3em",
+                    fontFamily: "Kode Mono, Red Hat Mono, Inconsolata, Monaco, Consolas, 'Courier New', Courier,",
+                    fontSize: "1.3em",
                     background: "#1d2433",
                     primaryColor: "#2f3b54",
                     secondaryColor: "#1d243344",
@@ -51,7 +54,8 @@ export default function MermaidModal({ mermaidId }: { mermaidId: string }) {
                     // errorBkgColor: "",
                     // errorTextColor: "",
                 },
-                flowchart:{
+                flowchart: {
+                    useMaxWidth: true,
                     defaultRenderer: "dagre",
                     curve: "catmullRom"
                 }
@@ -67,11 +71,18 @@ export default function MermaidModal({ mermaidId }: { mermaidId: string }) {
         renderSVG()
     }, [])
     return (
-        <div>
+        <div className="text-center mt-3" >
             <Dialog>
-                <DialogTrigger>View Diagram</DialogTrigger>
-                <DialogContent className="max-w-[95%] max-h-[95%]">
-                    <img className="object-fill" src={svgFilePath} />
+                <DialogTrigger>
+                    <Button variant={"ghost"} className="" size={"sm"}>
+                        <ZoomInIcon className="h-6 w-6 mt-0.5 text-sm" />
+                        <p>View Diagram</p>
+                    </Button>
+
+                </DialogTrigger>
+                <DialogContent className="max-w-none max-h-none h-[90vh] w-screen">
+                    <Image className="h-96 object-fill" src={svgFilePath} alt="Mermaid Diagram" fill />
+                    {/* <img src={svgFilePath} alt="Mermaid Diagram" /> */}
                     {/* <DialogHeader>
                     <DialogTitle>Diagram</DialogTitle>
                     <DialogDescription>

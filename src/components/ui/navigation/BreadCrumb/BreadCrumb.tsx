@@ -31,20 +31,10 @@ function slugify(text: string) {
         .replace(/-+$/, "") // Trim - from end of text
 }
 
-export default function BreadCrumb({ rootPage, curPage, allPosts, curPageData }: { rootPage: { title: string, href: string }, curPage: { title: string, href: string } | undefined, allPosts?: any, curPageData?: any }) {
-    let headings: {"index": number, "title": string, "href": string }[]
-    let renderHeadings = false
+export default function BreadCrumb({ rootPage, curPage, allPosts }: { rootPage: { title: string, href: string }, curPage: { title: string, href: string } | undefined, allPosts?: any }) {
 
-    if (curPageData !== undefined) {
-        renderHeadings = true
-        headings = curPageData.content.root.children
-            .filter((childNode) => childNode.type === "heading" && childNode.tag !== "h1")
-            .map((heading, index) => { return { "index": index, "title": heading.children[0].text, "href": slugify(heading.children[0].text) } })
-            .sort((headingA, headingB) => headingA.index - headingB.index)
-    }
-    console.log(headings)
 
-    // React.useState()
+    let headings: { "index": number, "title": string, "href": string }[]
 
     return (
         <div className="not-prose">
@@ -76,30 +66,6 @@ export default function BreadCrumb({ rootPage, curPage, allPosts, curPageData }:
                             </DropdownMenu>
                         </BreadcrumbItem>
                     }
-                    {renderHeadings && <BreadcrumbSeparator />}
-                    {renderHeadings &&
-                        <BreadcrumbItem>
-                            <DropdownMenu>
-                                <DropdownMenuTrigger className="flex items-center gap-1">
-                                    {headings.shift().title}
-                                    <ChevronDownIcon />
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end">
-                                    {
-                                        headings
-                                            // .filter((post) => post.title !== curPage.title)
-                                            .map((heading, index) => (
-                                                <DropdownMenuItem key={`breadcrumb-posts-${index}`}>
-                                                    <Link href={`#${heading.href}`}>{heading.title}</Link>
-                                                </DropdownMenuItem>
-                                            ))
-                                    }
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        </BreadcrumbItem>
-                    }
-
-
                 </BreadcrumbList>
             </Breadcrumb>
         </div>

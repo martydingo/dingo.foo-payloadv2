@@ -5,6 +5,9 @@ const { withPayload } = require("@payloadcms/next-payload");
 module.exports = withPayload(
   {
     reactStrictMode: false,
+    // images: {
+    //   dangerouslyAllowSVG: true,
+    // },
     experimental: {
       esmExternals: "loose"
     },

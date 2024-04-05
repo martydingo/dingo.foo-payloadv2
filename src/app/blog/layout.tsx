@@ -8,7 +8,7 @@ export default function BlogLayout({
 }>) {
     return (
         <div>
-            <NavigationBar />
+            <NavigationBar curPage="Blog" />
             {children}
         </div>
     )
