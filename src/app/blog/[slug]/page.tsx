@@ -30,13 +30,13 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     })
 
     const headings = BlogPost.docs[0].content.root.children
-    .filter((childNode) => childNode.type === "heading" && childNode.tag !== "h1")
-    .map((heading, index) => { return { "index": index, "title": heading.children[0].text, "href": slugify(heading.children[0].text) } })
-    .sort((headingA, headingB) => headingA.index - headingB.index)
+        .filter((childNode) => childNode.type === "heading" && childNode.tag !== "h1")
+        .map((heading, index) => { return { "index": index, "title": heading.children[0].text, "href": slugify(heading.children[0].text) } })
+        .sort((headingA, headingB) => headingA.index - headingB.index)
 
     return (
-        <div>
-            <div className="xl:container">
+        <div className="flex flex-col">
+            <div className="items-center basis-1/3 mx-auto xl:container xl:max-w-5xl gap-4 flex flex-col xl:flex-row xl:justify-between">
                 <BreadCrumb
                     rootPage={{ "title": "Blog", "href": "/blog" }}
                     curPage={{ "title": `${BlogPost.docs[0].title as string}`, "href": `/blog/${BlogPost.docs[0].slug as string}` }}
@@ -44,8 +44,14 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                 />
                 <HeadingSelect headings={headings} />
             </div>
-            <div className="prose dark:prose-invert container xl:container xl:max-w-5xl">
+            <div className="basis-1/3 prose dark:prose-invert container xl:container xl:max-w-5xl grid">
+                <div className="mx-auto flex xl:ml-0">
+          
+                </div>
                 <div dangerouslySetInnerHTML={{ '__html': BlogPost.docs[0].content_html as string }} />
+            </div>
+            <div className="basis-1/3">
+
             </div>
             <Mermaid />
         </div>

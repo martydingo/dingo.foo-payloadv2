@@ -41,7 +41,6 @@ export default function HeadingSelect({ headings }: { headings: any }) {
         // })
     })
     return (
-        <div className="fixed">
         <Select 
             onValueChange={(value) => {
             selectHeading(value)
@@ -62,6 +61,5 @@ export default function HeadingSelect({ headings }: { headings: any }) {
                 }
             </SelectContent>
         </Select >
-        </div>
     )
 }
