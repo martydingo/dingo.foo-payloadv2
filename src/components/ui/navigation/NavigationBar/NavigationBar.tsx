@@ -59,9 +59,9 @@ export default function NavigationBar({ curPage }: { curPage: string }) {
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
-            <div className="self-center font-titillium uppercase font-bold text-xl mt-4">
+            {/* <div className="self-center font-titillium uppercase font-bold text-xl mt-4">
                 {curPage}
-            </div>
+            </div> */}
             <div className="self-center mt-3 mr-3">
                 <div className="flex gap-4">
                     <AdminButton />

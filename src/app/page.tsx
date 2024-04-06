@@ -12,7 +12,7 @@ export default function Home() {
         <div className=" col-start-2 row-start-2 text-center">
           <div>
             <div className="space-y-2">
-              <h1 className="h-14 bg-gradient-to-r from-orange-600 to-blue-600 inline-block text-transparent bg-clip-text text-5xl">dingo.foo</h1>
+              <h1 className="h-14 bg-gradient-to-r from-orange-700 to-slate-600 font-titillium inline-block text-transparent bg-clip-text text-5xl">dingo.foo</h1>
               <p className="text-sm text-muted-foreground">
                 Yet another mix of a personal website, a blog, and a portfolio.
               </p>
