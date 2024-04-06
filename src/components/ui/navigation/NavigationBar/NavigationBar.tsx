@@ -18,7 +18,7 @@ import AdminButton from "../../admin-button";
 
 export default function NavigationBar({ curPage }: { curPage: string }) {
     return (
-        <header className="rounded-xl px-4 sticky top-0 flex justify-between bg-black z-20 opacity-85 pb-3 ">
+        <header className="rounded-xl px-4 sticky top-0 flex justify-between dark:bg-black bg-white z-20 opacity-85 pb-3 ">
             <NavigationMenu className="mt-3">
                 <NavigationMenuList>
                     <NavigationMenuItem>
