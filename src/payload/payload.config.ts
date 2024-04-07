@@ -9,6 +9,8 @@ import profileImage from './collections/Media/ProfileImage/ProfileImage';
 import Users from './collections/Users';
 import Blog from './collections/Blog/Blog';
 import blogImage from './collections/Media/BlogImage/BlogImage';
+import Projects from './collections/Projects/Projects';
+import projectImage from './collections/Media/ProjectImage/ProjectImage';
 
 export default buildConfig({
   admin: {
@@ -20,10 +22,12 @@ export default buildConfig({
   editor: slateEditor({}),
   collections: [
     blogImage,
+    projectImage,
     profileImage,
     siteImage,
     Users,
-    Blog
+    Blog,
+    Projects
   ],
   globals: [
     // Your globals here

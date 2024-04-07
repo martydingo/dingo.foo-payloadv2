@@ -15,7 +15,6 @@ export default async function Blog() {
         <div className="flex flex-col mt-8">
             <div className="flex w-screen">
                 <div className="basis-1/3" />
-            <BreadCrumb rootPage={{ "title": "Blog", "href": "/blog" }} />
                 <div className="basis-1/3">
                     {/* <h1 className="self-center text-center text-4xl pb-8 font-titillium">
                         Featured Posts
