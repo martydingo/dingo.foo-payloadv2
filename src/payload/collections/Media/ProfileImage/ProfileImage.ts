@@ -9,6 +9,9 @@ const profileImage: CollectionConfig = {
     access: {
         read: () => true,
     },
+    admin: {
+        group: "Users",
+    },
     upload: {
         staticURL: '/images/avatar',
         staticDir: '../../public/images/avatar',

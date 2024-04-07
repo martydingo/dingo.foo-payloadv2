@@ -7,6 +7,7 @@ const Users: CollectionConfig = {
     },
     auth: true,
     admin: {
+        group: "Users",
         useAsTitle: 'name',
     },
     fields: [

@@ -19,6 +19,6 @@ export const HeadingHTMLConverterFeature = (props?): FeatureProvider => {
                 props: props,
             }
         },
-        key: 'heading',
+        key: 'Heading',
     }
 }

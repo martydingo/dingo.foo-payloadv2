@@ -1,9 +1,8 @@
 import "@/styles/css/globals.css";
 import { getPayloadClient } from "@/payload/payloadClient";
-import Mermaid from "@/components/ui/blog/Mermaid";
+import Mermaid from "@/components/ui/project/Mermaid";
 import BreadCrumb from "@/components/ui/navigation/BreadCrumb/BreadCrumb";
 import HeadingSelect from "@/components/ui/navigation/HeadingSelect/HeadingSelect";
-import { BlogPostClient } from "@/components/ui/blog/BlogPostClient";
 
 function slugify(text: string) {
     return text
@@ -16,13 +15,13 @@ function slugify(text: string) {
         .replace(/-+$/, "") // Trim - from end of text
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+export default async function ProjectPost({ params }: { params: { slug: string } }) {
     const payload = await getPayloadClient();
-    const allBlogPosts = await payload.find({
-        collection: "blog"
+    const allProjectPosts = await payload.find({
+        collection: "project"
     })
-    const BlogPost = await payload.find({
-        collection: "blog",
+    const ProjectPost = await payload.find({
+        collection: "project",
         where: {
             slug: {
                 equals: params.slug
@@ -30,7 +29,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         },
     })
 
-    const headings = BlogPost.docs[0].content.root.children
+    const headings = ProjectPost.docs[0].content.root.children
         .filter((childNode) => childNode.type === "heading" && childNode.tag !== "h1")
         .map((heading, index) => { return { "index": index, "title": heading.children[0].text, "href": slugify(heading.children[0].text) } })
         .sort((headingA, headingB) => headingA.index - headingB.index)
@@ -39,9 +38,9 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <div className="flex flex-col">
             <div className="items-center basis-1/3 mx-auto xl:container xl:max-w-5xl gap-4 flex flex-col xl:flex-row xl:justify-between">
                 <BreadCrumb
-                    rootPage={{ "title": "Blog", "href": "/blog" }}
-                    curPage={{ "title": `${BlogPost.docs[0].title as string}`, "href": `/blog/${BlogPost.docs[0].slug as string}` }}
-                    allPosts={allBlogPosts.docs}
+                    rootPage={{ "title": "Project", "href": "/project" }}
+                    curPage={{ "title": `${ProjectPost.docs[0].title as string}`, "href": `/project/${ProjectPost.docs[0].slug as string}` }}
+                    allPosts={allProjectPosts.docs}
                 />
                 <HeadingSelect headings={headings} />
             </div>
@@ -49,7 +48,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                 <div className="mx-auto flex xl:ml-0">
           
                 </div>
-                <BlogPostClient page={BlogPost.docs[0]} />
+                <ProjectPostClient page={ProjectPost.docs[0]} />
             </div>
             <div className="basis-1/3">
 

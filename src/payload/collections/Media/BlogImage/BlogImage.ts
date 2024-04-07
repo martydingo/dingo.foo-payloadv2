@@ -9,6 +9,9 @@ const blogImage: CollectionConfig = {
     access: {
         read: () => true,
     },
+    admin: {
+        group: "Blog",
+    },
     upload: {
         staticURL: '/images/blog',
         staticDir: '../../public/images/blog',

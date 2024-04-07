@@ -26,6 +26,17 @@ const Blog: CollectionConfig = {
     access: {
         read: () => true,
     },
+    admin: {
+        group: "Blog",
+        livePreview: {
+            url: ({
+                data,
+                documentInfo,
+                locale
+            }) => { return `/blog/${data.slug}` }
+        },
+    },
+
     fields: [
         Title,
         Date,

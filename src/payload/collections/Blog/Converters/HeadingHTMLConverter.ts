@@ -31,5 +31,5 @@ export const HeadingHTMLConverter: any = {
                 return `<h6 id="${slugify(node.children[0].text)}">${node.children[0].text}</h6>`
         }
     },
-    nodeTypes: ['heading'],
+    nodeTypes: ['Heading'],
 }

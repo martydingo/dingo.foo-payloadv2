@@ -13,10 +13,16 @@ const Projects: CollectionConfig = {
     slug: 'projects',
     labels: {
         singular: 'Project',
-        plural: 'Projecs',
+        plural: 'Projects',
     },
     access: {
         read: () => true,
+    },
+    admin: {
+        group: "Projects",
+        // livePreview: {
+        //     url: 'http://172.28.4.29:3000/',
+        // },
     },
     fields: [
         Title,

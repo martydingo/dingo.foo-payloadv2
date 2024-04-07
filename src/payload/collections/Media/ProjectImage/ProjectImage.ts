@@ -9,6 +9,9 @@ const projectImage: CollectionConfig = {
     access: {
         read: () => true,
     },
+    admin: {
+        group: "Projects",
+    },
     upload: {
         staticURL: '/images/projects',
         staticDir: '../../public/images/projects',
