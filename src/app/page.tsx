@@ -3,7 +3,8 @@ import NavigationBar from "@/components/ui/navigation/NavigationBar/NavigationBa
 import BreadCrumb from "@/components/ui/navigation/BreadCrumb/BreadCrumb";
 import { Separator } from "@/shadcn-ui/separator";
 
-export default function Home() {
+export default async function Home() {
+
 
   return (
     <div>
